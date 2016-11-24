@@ -1,4 +1,4 @@
-# docker-nginx-http2
+# docker-nginx-openssl1.0.2
 Docker image for nginx 1.11.1 with openssl 1.0.2f and http2 module support
 
 ## What's inside
