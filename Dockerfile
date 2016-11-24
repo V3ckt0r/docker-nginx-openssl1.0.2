@@ -57,6 +57,6 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 RUN rm -rf /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 80
+EXPOSE 80 443
 
 CMD ["nginx"]
