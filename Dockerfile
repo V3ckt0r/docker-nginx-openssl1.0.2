@@ -3,7 +3,7 @@ Maintainer V3ckt0r
 LABEL Vendor="Nginx http2 openssl1.0.2f ALPN"
 
 # Install packages
-RUN apt-get update && apt-get install -y ca-certificates build-essential wget libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev
+RUN apt-get update && apt-get install -y ca-certificates build-essential wget libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev libperl-dev
 
 #Compile openssl
 ENV OPENSSL_VERSION ${OPENSSL_VERSION:-1_0_2f}
@@ -28,6 +28,12 @@ RUN wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
 
 COPY conf /nginx-${NGINX_VERSION}/auto/lib/openssl/
 
+#add nginxx user and group
+RUN addgroup nginx \
+  #&& adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \
+  && adduser --system --no-create-home --disabled-login --disabled-password --group nginx
+ # && adduser -G nginx nginx \
+
 
 RUN cd nginx-${NGINX_VERSION} \
   && ./configure \
@@ -37,6 +43,8 @@ RUN cd nginx-${NGINX_VERSION} \
     --pid-path=/var/run/nginx.pid \
     --error-log-path=/var/log/nginx/error.log \
     --http-log-path=/var/log/nginx/access.log \
+    --user=nginx \
+    --group=nginx \
     --with-http_ssl_module \
     --with-http_v2_module \
     --with-openssl=/usr \
@@ -44,6 +52,7 @@ RUN cd nginx-${NGINX_VERSION} \
     --with-http_stub_status_module \
     --with-threads \
     --with-ipv6 \
+    --with-http_perl_module=dynamic \
   && make \
 && make install
 
