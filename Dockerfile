@@ -1,12 +1,12 @@
 FROM debian:jessie
 Maintainer V3ckt0r
-LABEL Vendor="Nginx http2 openssl1.0.2f ALPN"
+LABEL Vendor="Nginx http2 openssl1.0.2j ALPN"
 
 # Install packages
 RUN apt-get update && apt-get install -y ca-certificates build-essential wget libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev libperl-dev
 
 #Compile openssl
-ENV OPENSSL_VERSION ${OPENSSL_VERSION:-1_0_2f}
+ENV OPENSSL_VERSION ${OPENSSL_VERSION:-1_0_2j}
 RUN wget https://github.com/openssl/openssl/archive/OpenSSL_${OPENSSL_VERSION}.tar.gz \
   && tar -xvzf OpenSSL_${OPENSSL_VERSION}.tar.gz \
   && cd openssl-OpenSSL_${OPENSSL_VERSION} \
