@@ -1,6 +1,6 @@
 # docker-nginx-openssl1.0.2
 
-[![Build Status](http://64.137.185.181:8080/job/nginx-openssl1.0.2/badge/icon)](http://64.137.185.181:8080/job/nginx-openssl1.0.2/)
+[![Build Status](http://64.137.185.181:8080/buildStatus/icon?job=nginx-openssl1.0.2)](http://64.137.185.181:8080/job/nginx-openssl1.0.2)
 
 Docker image for nginx 1.11.1 with openssl 1.0.2f and http2 module support
 
