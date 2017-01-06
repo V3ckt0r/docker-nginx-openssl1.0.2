@@ -1,6 +1,6 @@
 # docker-nginx-openssl1.0.2
 
-[![Build Status](https://travis-ci.org/pmd/pmd.svg?branch=master)](https://travis-ci.org/pmd/pmd)
+[![Build Status](https://)](https://64.137.185.181/job/nginx-openssl1.0.2/)
 
 Docker image for nginx 1.11.1 with openssl 1.0.2f and http2 module support
 
