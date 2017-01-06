@@ -26,7 +26,7 @@ ENV NGINX_VERSION ${NGINX_VERSION:-1.11.1}
 RUN wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
   && tar -xzvf nginx-${NGINX_VERSION}.tar.gz
 
-COPY conf /nginx-${NGINX_VERSION}/auto/lib/openssl/
+COPY /var/lib/jenkins/workspace/nginx-openssl1.0.2/docker-nginx-openssl1.0.2/conf /nginx-${NGINX_VERSION}/auto/lib/openssl/
 
 #add nginxx user and group
 RUN addgroup nginx \
@@ -64,7 +64,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN rm -rf /etc/nginx/nginx.conf
-ADD nginx.conf /etc/nginx/nginx.conf
+ADD /var/lib/jenkins/workspace/nginx-openssl1.0.2/docker-nginx-openssl1.0.2/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80 443
 
