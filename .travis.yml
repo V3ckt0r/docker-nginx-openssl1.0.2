@@ -9,8 +9,7 @@ before_install:
     - docker pull vect0r/nginx-openssl1.0.2
     - docker build -t vect0r/nginx-openssl1.0.2 .
     - docker run -d -p 127.0.0.1:80:80 vect0r/nginx-openssl1.0.2
-    - docker ps -a
-    - docker exec -it 7de94210a5c3 /usr/bin/pgrep -F /var/run/nginx.pid
+    - docker ps -a | /usr/bin/awk '{print $1}'
 
 script:
-    - docker exec -it 7de94210a5c3 /usr/bin/pgrep -F /var/run/nginx.pid
+    - docker exec -it $(!!) /usr/bin/pgrep -F /var/run/nginx.pid
