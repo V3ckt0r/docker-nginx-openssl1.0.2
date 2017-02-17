@@ -6,12 +6,9 @@ services:
   - docker
 
 before_install:
-    - echo "test this"
-    - !!
     - docker pull vect0r/nginx-openssl1.0.2
     - docker build -t vect0r/nginx-openssl1.0.2 .
-    - docker run -d -p 127.0.0.1:80:80 vect0r/nginx-openssl1.0.2
-    - output = $(docker ps -a | /usr/bin/awk 'NR > 1 {print $1}')
+    - docker run --name="nginx-build" -d -p 127.0.0.1:80:80 vect0r/nginx-openssl1.0.2
 
 script:
-    - docker exec -it $output /usr/bin/pgrep -F /var/run/nginx.pid
+    - docker exec -it nginx-build /usr/bin/pgrep -F /var/run/nginx.pid
