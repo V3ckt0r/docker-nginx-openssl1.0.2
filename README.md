@@ -10,14 +10,10 @@ Docker image for nginx 1.11.1 with openssl 1.0.2f and http2 module support
  - Nginx http_stub_status_module
  - Nginx http_realip_module
 
-##Purpose
+## Purpose
 This image is built primarily for having Nginx compiled with the Openssl 1.0.2 source. This is required to have ALPN
 support with http2. The offical Nginx docker images, tag nginx:latest, doesn't have Openssl 1.0.2 source in the build.
 
-##Todo
- - Test against Control Center
- - Test against BBC.reverse-proxy
-
-##Roadmap
+## Roadmap
  - Look into incorporating a cloud log collector (fluentd/tdagent)
  - Intergration with SumoLogic
